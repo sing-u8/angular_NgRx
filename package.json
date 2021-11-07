@@ -9,7 +9,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prepare": "husky install",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "prettier-write-all": "npx prettier --write .",
+    "prettier-check-all": "npx prettier --check .",
+    "git-autocrlf-true": "git config --global core.autocrlf true"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
@@ -24,6 +27,8 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@ngrx/store": "^12.5.1",
+    "@ngrx/store-devtools": "^12.5.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
