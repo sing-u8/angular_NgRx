@@ -21,7 +21,8 @@
     "lib": ["es2020", "dom"],
     "paths": {
       "@auth/*": ["./src/app/auth/*"],
-      "@environments/*": ["./src/environments/*"]
+      "@environments/*": ["./src/environments/*"],
+      "@shared": ["./src/app/shared/*"]
     }
   },
   "angularCompilerOptions": {
