@@ -1,4 +1,5 @@
-import { createReducer, on, Action } from '@ngrx/store'
+import { createReducer, on } from '@ngrx/store'
+import { createImmerReducer } from 'ngrx-immer/store'
 
 import { AuthStateInterface } from '@auth/types/authState.interface'
 import { registerAction } from '@auth/store/actions'
@@ -7,17 +8,22 @@ const initialState: AuthStateInterface = {
   isSubmitting: false,
 }
 
-export const authReducer = createReducer(
+export const authReducer = createImmerReducer(
   initialState,
-  on(
-    registerAction,
-    (state): AuthStateInterface => ({
-      ...state,
-      isSubmitting: true,
-    })
-  )
+  on(registerAction, (state): AuthStateInterface => {
+    state.isSubmitting = true
+    return state
+  })
 )
 
-// export function reducers(state: AuthStateInterface, action: Action) {
-//   return authReducer(state, action)
-// }
+// is same functionality
+// export const authReducer = createReducer(
+//   initialState,
+//   on(
+//     registerAction,
+//     (state): AuthStateInterface => ({
+//       ...state,
+//       isSubmitting: true,
+//     })
+//   )
+// )
