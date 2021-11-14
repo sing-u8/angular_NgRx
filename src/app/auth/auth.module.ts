@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 
 import { StoreModule } from '@ngrx/store'
 import { authReducer } from '@auth/store/reducers'
+import { authFeatureKey } from '@auth/store/selectors'
 
 import { RegisterComponent } from './components/register/register.component'
 
@@ -15,7 +16,7 @@ const routes: Routes = [{ path: 'register', component: RegisterComponent }]
     CommonModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    StoreModule.forFeature('auth', authReducer),
+    StoreModule.forFeature(authFeatureKey, authReducer),
   ],
   exports: [],
   declarations: [RegisterComponent],

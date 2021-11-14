@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
-import { Store } from '@ngrx/store'
+import { Store, select } from '@ngrx/store'
+import { Observable } from 'rxjs'
 
 import { registerAction } from '@auth/store/actions'
+import { isSubmittingSelector } from '@auth/store/selectors'
 
 @Component({
   selector: 'auth-register',
@@ -11,8 +13,10 @@ import { registerAction } from '@auth/store/actions'
 })
 export class RegisterComponent implements OnInit {
   public form: FormGroup
+  public isSubmitting$: Observable<boolean>
 
   constructor(private fb: FormBuilder, private store: Store) {
+    this.isSubmitting$ = this.store.pipe(select(isSubmittingSelector))
     this.form = this.fb.group({
       username: ['', Validators.required],
       email: ['', Validators.required],
