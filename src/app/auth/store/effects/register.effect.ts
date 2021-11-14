@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http'
 import { Router } from '@angular/router'
 
 import { createEffect, Actions, ofType } from '@ngrx/effects'
-import { map, catchError, switchMap } from 'rxjs/operators'
+import { map, catchError, switchMap, tap } from 'rxjs/operators'
 
 import { PersistanceService } from '@shared/services/persistance.service'
 
@@ -24,10 +24,11 @@ export class RegisterEffect {
       switchMap(({ request }) => {
         return this.authService.register(request).pipe(
           map((currentUser: CurrentUserInterface) => {
+            this.persistanceService.set('accessToken', currentUser.token)
             return registerSuccessAction({ currentUser })
           }),
+
           catchError((errorResponse: HttpErrorResponse) => {
-            console.log('errorResponse: ', errorResponse)
             return of(
               registerFailureAction({ errors: errorResponse.error.errors })
             )
@@ -35,6 +36,17 @@ export class RegisterEffect {
         )
       })
     )
+  )
+
+  redirectAfterSubmit$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(registerSuccessAction),
+        tap(() => {
+          this.router.navigateByUrl('/')
+        })
+      ),
+    { dispatch: false }
   )
 
   constructor(
