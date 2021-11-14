@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core'
 import { HttpErrorResponse } from '@angular/common/http'
+import { Router } from '@angular/router'
 
 import { createEffect, Actions, ofType } from '@ngrx/effects'
 import { map, catchError, switchMap } from 'rxjs/operators'
+
+import { PersistanceService } from '@shared/services/persistance.service'
 
 import {
   registerAction,
@@ -34,5 +37,10 @@ export class RegisterEffect {
     )
   )
 
-  constructor(private actions$: Actions, private authService: AuthService) {}
+  constructor(
+    private actions$: Actions,
+    private authService: AuthService,
+    private persistanceService: PersistanceService,
+    private router: Router
+  ) {}
 }
