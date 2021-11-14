@@ -1288,6 +1288,13 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/resolve-uri/-/resolve-uri-1.0.0.tgz#3fdf5798f0b49e90155896f6291df186eac06c83"
   integrity sha512-9oLAnygRMi8Q5QkYEU4XWK04B+nuoXoxjRvRxgjuChkLZFBja0YPSgdZ7dZtwhncLBcQe/I/E+fLuk5qxcYVJA==
 
+"@ngrx/data@^12.5.1":
+  version "12.5.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/data/-/data-12.5.1.tgz#fd422291b262ab3625e058eea2c60d5b3e9337a5"
+  integrity sha512-SVl+VGHlctDIY1UqHSxGqTnWUEPd5eo+yxy8uhdxH2vp1H7hgERxHcelAkhqJVQrOk7xzW/pNNatzw8tqh71zA==
+  dependencies:
+    tslib "^2.0.0"
+
 "@ngrx/effects@^12.5.1":
   version "12.5.1"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-12.5.1.tgz#acd0ff86d8db514e47337508dde83cc98f7a3416"

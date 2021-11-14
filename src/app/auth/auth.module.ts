@@ -12,6 +12,8 @@ import { RegisterComponent } from '@auth/components/register/register.component'
 import { AuthService } from '@auth/services/auth.service'
 import { RegisterEffect } from '@auth/store/effects/register.effect'
 
+import { BackendErrorMessagesModule } from '@shared/modules/backendErrorMessages/backendErrorMessages.module'
+
 const routes: Routes = [{ path: 'register', component: RegisterComponent }]
 
 @NgModule({
@@ -21,6 +23,7 @@ const routes: Routes = [{ path: 'register', component: RegisterComponent }]
     ReactiveFormsModule,
     StoreModule.forFeature(authFeatureKey, authReducer),
     EffectsModule.forFeature([RegisterEffect]),
+    BackendErrorMessagesModule,
   ],
   exports: [],
   declarations: [RegisterComponent],
