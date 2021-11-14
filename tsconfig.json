@@ -22,7 +22,7 @@
     "paths": {
       "@auth/*": ["./src/app/auth/*"],
       "@environments/*": ["./src/environments/*"],
-      "@shared": ["./src/app/shared/*"]
+      "@shared/*": ["./src/app/shared/*"]
     }
   },
   "angularCompilerOptions": {

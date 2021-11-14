@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store'
 import { createImmerReducer } from 'ngrx-immer/store'
 
 import { AuthStateInterface } from '@auth/types/authState.interface'
-import { registerAction } from '@auth/store/actions'
+import { registerAction } from '@auth/store/actions/register.action'
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,

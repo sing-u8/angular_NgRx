@@ -3,8 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Store, select } from '@ngrx/store'
 import { Observable } from 'rxjs'
 
-import { registerAction } from '@auth/store/actions'
+import { registerAction } from '@auth/store/actions/register.action'
 import { isSubmittingSelector } from '@auth/store/selectors'
+import { RegisterRequestInterface } from '@auth/types/registerRequest.interface'
 
 @Component({
   selector: 'auth-register',
@@ -28,6 +29,9 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     console.log('submit', this.form.value, this.form.valid)
-    this.store.dispatch(registerAction(this.form.value))
+    const request: RegisterRequestInterface = {
+      user: this.form.value,
+    }
+    this.store.dispatch(registerAction({ request }))
   }
 }
