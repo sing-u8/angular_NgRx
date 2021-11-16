@@ -12,9 +12,15 @@ import {
   loginSuccessAction,
   loginFailureAction,
 } from '@auth/store/actions/login.action'
+import {
+  getCurrentUserAction,
+  getCurrentUserFailureAction,
+  getCurrentUserSuccessAction,
+} from './actions/getCurrentUser.action'
 
 const initialState: AuthStateInterface = {
   isSubmitting: false,
+  isLoading: false,
   currentUser: null,
   validationErrors: null,
   isLoggedIn: null,
@@ -53,6 +59,23 @@ export const authReducer = createImmerReducer(
   on(loginFailureAction, (state, action): AuthStateInterface => {
     state.isSubmitting = false
     state.validationErrors = action.errors
+    return state
+  }),
+  //------------------------------------------------------------------------//
+  on(getCurrentUserAction, (state): AuthStateInterface => {
+    state.isLoading = true
+    return state
+  }),
+  on(getCurrentUserSuccessAction, (state, action): AuthStateInterface => {
+    state.isLoading = false
+    state.isLoggedIn = true
+    state.currentUser = action.currentUser
+    return state
+  }),
+  on(getCurrentUserFailureAction, (state): AuthStateInterface => {
+    state.isLoading = false
+    state.isLoggedIn = false
+    state.currentUser = null
     return state
   })
 )
