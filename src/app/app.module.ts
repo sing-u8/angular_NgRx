@@ -15,6 +15,7 @@ import { AuthInterceptor } from '@shared/services/authinterceptor.service'
 
 import { AuthModule } from '@auth/auth.module'
 import { environment } from '@environments/environment'
+import { GlobalFeedModule } from '@globalFeed/globalFeed.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { environment } from '@environments/environment'
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
+    GlobalFeedModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({
