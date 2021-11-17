@@ -18,6 +18,8 @@ import {
   getCurrentUserSuccessAction,
 } from './actions/getCurrentUser.action'
 
+export const authFeatureKey = 'auth'
+
 const initialState: AuthStateInterface = {
   isSubmitting: false,
   isLoading: false,
