@@ -1,5 +1,4 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store'
-import { AppStateInterface } from '@shared/types/appState.interface'
 import { AuthStateInterface } from '@auth/types/authState.interface'
 import { authFeatureKey } from '@auth/store/reducers'
 
