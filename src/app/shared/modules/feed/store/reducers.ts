@@ -1,4 +1,5 @@
 import { createReducer, on, Action } from '@ngrx/store'
+import { routerNavigationAction } from '@ngrx/router-store'
 import { createImmerReducer } from 'ngrx-immer/store'
 import { FeedStateInterface } from '@shared/modules/feed/types/feedState.interface'
 import {
@@ -29,6 +30,9 @@ export const feedReducer = createImmerReducer(
   on(getFeedFailureAction, (state): FeedStateInterface => {
     state.isLoading = false
     return state
+  }),
+  on(routerNavigationAction, (state): FeedStateInterface => {
+    return initialState
   })
 )
 

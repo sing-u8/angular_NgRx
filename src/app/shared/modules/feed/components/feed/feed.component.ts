@@ -12,6 +12,8 @@ import {
   isLoadingSelector,
 } from '@shared/modules/feed/store/selectors'
 
+import { stringify, parseUrl } from 'query-string'
+
 import { environment } from '@environments/environment'
 
 @Component({
@@ -41,21 +43,29 @@ export class FeedComponent implements OnInit, OnDestroy {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector))
 
     this.baseUrl = this.router.url.split('?')[0] // get base url
-    this.queryParamsSubscription = this.route.queryParams.subscribe(
-      (params: Params) => {
-        this.currentPage = Number(params['page'] || '1')
-      }
-    )
   }
 
   ngOnInit(): void {
-    this.fetchData()
+    this.queryParamsSubscription = this.route.queryParams.subscribe(
+      (params: Params) => {
+        this.currentPage = Number(params['page'] || '1')
+        this.fetchFeed()
+      }
+    )
   }
   ngOnDestroy(): void {
     this.queryParamsSubscription.unsubscribe()
   }
 
-  fetchData(): void {
-    this.store.dispatch(getFeedAction({ url: this.apiUrlProps }))
+  fetchFeed(): void {
+    const offset = this.currentPage * this.limit - this.limit
+    const parsedUrl = parseUrl(this.apiUrlProps)
+    const stringifiedParams = stringify({
+      limit: this.limit,
+      offset,
+      ...parsedUrl.query,
+    })
+    const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
+    this.store.dispatch(getFeedAction({ url: apiUrlWithParams }))
   }
 }
