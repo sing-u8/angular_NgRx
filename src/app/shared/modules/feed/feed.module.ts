@@ -16,6 +16,7 @@ import {
 import { ErrorMessageModule } from '@shared/modules/errorMessage/errorMessage.module'
 import { LoadingModule } from '@shared/modules/loading/loading.module'
 import { PaginationModule } from '@shared/modules/pagination/pagination.module'
+import { TagListModule } from '@shared/modules/tagList/tagList.module'
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { PaginationModule } from '@shared/modules/pagination/pagination.module'
     ErrorMessageModule,
     LoadingModule,
     PaginationModule,
+    TagListModule,
   ],
   declarations: [FeedComponent],
   exports: [FeedComponent],
