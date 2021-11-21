@@ -4,14 +4,18 @@ import { getArticleAction } from '@article/store/actions/getArticle.action'
 import { ActivatedRoute } from '@angular/router'
 import { ArticleInterface } from '@shared/types/article.interface'
 import { Subscription, pipe, Observable, combineLatest } from 'rxjs'
+
 import {
   articleSelector,
   isLoadingSelector,
   errorSelector,
 } from '@article/store/selectors'
+
 import { currentUserSelector } from '@auth/store/selectors'
 import { map } from 'rxjs/operators'
 import { CurrentUserInterface } from '@shared/types/currentUser.interface'
+
+import { deleteArticleAction } from '@article/store/actions/deleteArticle.action'
 
 @Component({
   selector: 'mc-article',
@@ -71,5 +75,9 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   fetchData(): void {
     this.store.dispatch(getArticleAction({ slug: this.slug }))
+  }
+
+  deleteArticle(): void {
+    this.store.dispatch(deleteArticleAction({ slug: this.slug }))
   }
 }
