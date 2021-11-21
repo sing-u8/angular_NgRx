@@ -25,7 +25,8 @@
       "@globalFeed/*": ["./src/app/globalFeed/*"],
       "@yourFeed/*": ["./src/app/yourFeed/*"],
       "@tagFeed/*": ["./src/app/tagFeed/*"],
-      "@article/*": ["./src/app/article/*"]
+      "@article/*": ["./src/app/article/*"],
+      "@createArticle/*": ["./src/app/createArticle/*"]
     }
   },
   "angularCompilerOptions": {
