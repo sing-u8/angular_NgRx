@@ -24,7 +24,8 @@
       "@shared/*": ["./src/app/shared/*"],
       "@globalFeed/*": ["./src/app/globalFeed/*"],
       "@yourFeed/*": ["./src/app/yourFeed/*"],
-      "@tagFeed/*": ["./src/app/tagFeed/*"]
+      "@tagFeed/*": ["./src/app/tagFeed/*"],
+      "@article/*": ["./src/app/article/*"]
     }
   },
   "angularCompilerOptions": {
