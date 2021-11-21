@@ -17,6 +17,8 @@ import { AuthInterceptor } from '@shared/services/authinterceptor.service'
 import { AuthModule } from '@auth/auth.module'
 import { environment } from '@environments/environment'
 import { GlobalFeedModule } from '@globalFeed/globalFeed.module'
+import { YourFeedModule } from './yourFeed/yourFeed.module'
+import { TagFeedModule } from 'src/app/tagFeed/tagFeed.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +27,6 @@ import { GlobalFeedModule } from '@globalFeed/globalFeed.module'
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
-    GlobalFeedModule,
     StoreModule.forRoot({ router: routerReducer }),
     StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([]),
@@ -34,6 +35,9 @@ import { GlobalFeedModule } from '@globalFeed/globalFeed.module'
       logOnly: environment.production,
     }),
     TopBarModule,
+    GlobalFeedModule,
+    YourFeedModule,
+    TagFeedModule,
   ],
   providers: [
     PersistanceService,

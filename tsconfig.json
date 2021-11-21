@@ -22,7 +22,9 @@
       "@auth/*": ["./src/app/auth/*"],
       "@environments/*": ["./src/environments/*"],
       "@shared/*": ["./src/app/shared/*"],
-      "@globalFeed/*": ["./src/app/globalFeed/*"]
+      "@globalFeed/*": ["./src/app/globalFeed/*"],
+      "@yourFeed/*": ["./src/app/yourFeed/*"],
+      "@tagFeed/*": ["./src/app/tagFeed/*"]
     }
   },
   "angularCompilerOptions": {
