@@ -19,6 +19,7 @@ import { environment } from '@environments/environment'
 import { GlobalFeedModule } from '@globalFeed/globalFeed.module'
 import { YourFeedModule } from './yourFeed/yourFeed.module'
 import { TagFeedModule } from 'src/app/tagFeed/tagFeed.module'
+import { ArticleModule } from './article/article.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,6 +39,7 @@ import { TagFeedModule } from 'src/app/tagFeed/tagFeed.module'
     GlobalFeedModule,
     YourFeedModule,
     TagFeedModule,
+    ArticleModule,
   ],
   providers: [
     PersistanceService,

@@ -1,31 +1,35 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { EffectsModule } from '@ngrx/effects'
 import { RouterModule } from '@angular/router'
 import { StoreModule } from '@ngrx/store'
+import { EffectsModule } from '@ngrx/effects'
 
-import { FeedComponent } from '@shared/modules/feed/components/feed/feed.component'
-import { feedReducer } from '@shared/modules/feed/store/reducers'
-import { ErrorMessageModule } from '@shared/modules/errorMessage/errorMessage.module'
-import { LoadingModule } from '@shared/modules/loading/loading.module'
-import { PaginationModule } from '@shared/modules/pagination/pagination.module'
-import { TagListModule } from '@shared/modules/tagList/tagList.module'
-import { ArticleService } from '@shared/services/article.service'
+import { ArticleComponent } from './components/article/article.component'
+import { ArticleService } from '../shared/services/article.service'
+import { reducers } from '@article/store/reducers'
 import { GetArticleEffect } from '@article/store/effects/getArticle.effect'
+import { LoadingModule } from '@shared/modules/loading/loading.module'
+import { ErrorMessageModule } from '@shared/modules/errorMessage/errorMessage.module'
+import { TagListModule } from '@shared/modules/tagList/tagList.module'
+
+const routes = [
+  {
+    path: 'articles/:slug',
+    component: ArticleComponent,
+  },
+]
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule.forChild(routes),
+    StoreModule.forFeature('article', reducers),
     EffectsModule.forFeature([GetArticleEffect]),
-    StoreModule.forFeature('feed', feedReducer),
-    RouterModule,
-    ErrorMessageModule,
     LoadingModule,
-    PaginationModule,
+    ErrorMessageModule,
     TagListModule,
   ],
-  declarations: [FeedComponent],
-  exports: [FeedComponent],
+  declarations: [ArticleComponent],
   providers: [ArticleService],
 })
-export class FeedModule {}
+export class ArticleModule {}

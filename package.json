@@ -12,7 +12,7 @@
     "precommit": "lint-staged",
     "prettier-write-all": "npx prettier --write .",
     "prettier-check-all": "npx prettier --check .",
-    "git-autocrlf-true": "git config --global core.autocrlf true"
+    "git-act": "git config --global core.autocrlf true"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
