@@ -20,6 +20,7 @@ import { GlobalFeedModule } from '@globalFeed/globalFeed.module'
 import { YourFeedModule } from './yourFeed/yourFeed.module'
 import { TagFeedModule } from 'src/app/tagFeed/tagFeed.module'
 import { ArticleModule } from './article/article.module'
+import { CreateArticleModule } from './createArticle/createArticle.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +40,7 @@ import { ArticleModule } from './article/article.module'
     GlobalFeedModule,
     YourFeedModule,
     TagFeedModule,
+    CreateArticleModule, // the order is important!!   -- article/new (primary) and article/:slug  (secandary)
     ArticleModule,
   ],
   providers: [
